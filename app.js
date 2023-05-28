@@ -28,7 +28,9 @@ btnGenerator.addEventListener('click', playMusic);
 btnStopInterval.addEventListener('click', stopMusic);
 
 function startCardGeneration() {
-    intervalId = setInterval(generateCard, 1000); 
+    setTimeout(() => {
+    intervalId = setInterval(generateCard, 1000);
+  }, 2000);
     btnGenerator.removeEventListener('click', startCardGeneration); 
     btnStopInterval.addEventListener('click', stopCardGeneration);
     
