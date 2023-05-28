@@ -1,0 +1,168 @@
+body {
+  font-family: 'Raleway';
+  font-weight: 600;
+  background: rgb(3,39,94);
+  background-image: url('https://media.istockphoto.com/id/1366656761/fr/vectoriel/fond-de-table-de-poker-dans-la-couleur-verte.jpg?s=612x612&w=0&k=20&c=eQFhfmZeUJalxnRr0pPq1q7ksRrVhPzvIy8eljhf148=');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+
+
+/* .card {
+  background-color: blanchedalmond;
+  width: 250px;
+  height: 400px;
+  margin: auto;
+  margin-top: 4rem;
+  position: relative;
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 8px 8px 5px #c30d0d;
+  transition: all .3;
+} */
+.cards-container {
+  width: 250px;
+  height: 400px;
+  margin: auto;
+  margin-top: 3rem;
+}
+
+.cards-container:hover > .card {
+  transform: rotateY(180deg);
+  perspective: 500px;
+}
+
+.front, .back {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.card {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  transition: transform .9s;
+  transform-style: preserve-3d;
+}
+.front-value {
+  background-color: blanchedalmond;
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 8px 8px 5px #c30d0d;
+  transition: all .3s;
+}
+
+.back {
+  transform: rotateY(180deg); /* Effectuer une rotation de 180 degrés sur l'axe Y */
+  background-image: url('https://www.francetvinfo.fr/pictures/Cu__qpmVIbYBF7Hy--EsUqwPxYg/1200x900/2019/10/04/phpZM56E9.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 8px 8px 5px #c30d0d;
+  border: 2px solid #000;
+  border-radius: 10px;
+}
+.back img {
+  border-radius: 8px;
+}
+
+
+.top{
+   display: flex;
+   justify-content: space-between;
+}
+.top-left,
+.top-right {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  font-size: 30px;
+}
+.top-left {
+  position: absolute;
+  top: 3px;
+  left: 7px;
+}
+.top-right{
+  position: absolute;
+  top: 3px;
+  right: 7px;
+}
+
+.bottom{
+  display: flex;
+  justify-content: space-between;
+}
+.bottom-left,
+.bottom-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(180deg);
+  font-size: 30px;
+}
+
+.bottom-left{
+  position: absolute;
+  bottom: 3px;
+  left: 7px;
+}
+.bottom-right{
+  position: absolute;
+  bottom: 3px;
+  right: 7px;
+}
+
+.top-icon,
+.bottom-icon{
+  font-size: 35px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 120px;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.generate {
+  margin-right: 5px;
+}
+.btn-stop {
+  margin-left: 5px;
+}
+  .generate,
+  .btn-stop {
+    padding: 15px 20px;
+    border-radius: 30px;
+    background:#c30d0d ;
+    color: blanchedalmond;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: 2px solid #000;
+    transition: all .2s;
+    cursor: pointer;
+  }
+
+  .generate:hover,
+  .btn-stop:hover {
+    color: #c30d0d;
+    background-color: blanchedalmond;
+  }
