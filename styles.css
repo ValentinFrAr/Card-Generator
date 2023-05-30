@@ -1,38 +1,30 @@
 body {
   font-family: 'Raleway';
   font-weight: 600;
-  background: rgb(3,39,94);
   background-image: url('https://media.istockphoto.com/id/1366656761/fr/vectoriel/fond-de-table-de-poker-dans-la-couleur-verte.jpg?s=612x612&w=0&k=20&c=eQFhfmZeUJalxnRr0pPq1q7ksRrVhPzvIy8eljhf148=');
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
-  overflow-y: hidden;
 }
 
-
-
-/* .card {
-  background-color: blanchedalmond;
-  width: 250px;
-  height: 400px;
-  margin: auto;
-  margin-top: 4rem;
-  position: relative;
-  border: 2px solid #000;
-  border-radius: 10px;
-  box-shadow: 8px 8px 5px #c30d0d;
-  transition: all .3;
-} */
+.all-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .cards-container {
   width: 250px;
   height: 400px;
   margin: auto;
   margin-top: 3rem;
+  perspective: 500px;
+  perspective-origin: center;
 }
 
 .cards-container:hover > .card {
-  transform: rotateY(180deg);
-  perspective: 500px;
+  transform-origin: center;
+  transform:translateX(-50%) rotateY(180deg);
 }
 
 .front, .back {
@@ -48,22 +40,26 @@ body {
   position: relative;
   transition: transform .9s;
   transform-style: preserve-3d;
+  z-index: 2;
+  transform-origin: center;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .front-value {
   background-color: blanchedalmond;
   border: 2px solid #000;
   border-radius: 10px;
-  box-shadow: 8px 8px 5px #c30d0d;
+  box-shadow: 8px 8px 5px #9D09BF;
   transition: all .3s;
 }
 
 .back {
-  transform: rotateY(180deg); /* Effectuer une rotation de 180 degrés sur l'axe Y */
+  transform: rotateY(180deg); 
   background-image: url('https://www.francetvinfo.fr/pictures/Cu__qpmVIbYBF7Hy--EsUqwPxYg/1200x900/2019/10/04/phpZM56E9.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  box-shadow: -8px 8px 5px #c30d0d;
+  box-shadow: -8px 8px 5px #9D09BF;
   border: 2px solid #000;
   border-radius: 10px;
 }
@@ -71,17 +67,12 @@ body {
   border-radius: 8px;
 }
 
-
-.top{
-   display: flex;
-   justify-content: space-between;
-}
 .top-left,
 .top-right {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  font-size: 30px;
+  font-size: 40px;
 }
 .top-left {
   position: absolute;
@@ -104,7 +95,7 @@ body {
   flex-direction: column;
   align-items: center;
   transform: rotate(180deg);
-  font-size: 30px;
+  font-size: 40px;
 }
 
 .bottom-left{
@@ -133,6 +124,7 @@ body {
   left: 0; 
   right: 0; 
   bottom: 0;
+  text-shadow: 4px 2px 0px rgba(157,9,191,.9);
 }
 
 .buttons {
@@ -152,17 +144,69 @@ body {
   .btn-stop {
     padding: 15px 20px;
     border-radius: 30px;
-    background:#c30d0d ;
-    color: blanchedalmond;
+    background:#9D09BF ;
+    color: #000;
     font-weight: 700;
     letter-spacing: 1px;
     border: 2px solid #000;
     transition: all .2s;
     cursor: pointer;
+    z-index: 99;
+    position: relative;
   }
 
   .generate:hover,
   .btn-stop:hover {
-    color: #c30d0d;
-    background-color: blanchedalmond;
+    color: #9D09BF;
+    background-color: #000;
+    border: 2px solid #9D09BF;
+  }
+
+  .input-width,
+  .btn-input {
+    text-align: center;
+    z-index: 98;
+    position: relative;
+  }
+
+  .input-w,
+  .input-h{
+    margin-top: 15px;
+    border: 1px solid #000;
+    background-color: rgba(157,9,191,.6);
+    border-radius: 10px;
+    padding: 7px 10px;
+    transition: all.3s;
+  }
+  .input-w::placeholder,
+  .input-h::placeholder{
+    color: #000;
+    opacity: .8;
+  }
+
+  .btn-size{
+    margin-top: 15px;
+    padding: 7px 10px;
+    border-radius: 10px;
+    border: 2px solid #000;
+    background-color: #9D09BF;
+    color: #000;
+    transition: all.3s;
+  }
+
+  .input-w:hover,
+  .input-h:hover {
+    background-color:rgba(157,9,191,.4);
+    color: #000;
+  }
+
+  .input-h:focus,
+  .input-w:focus{
+    background-color: rgba(157,9,191,.9);
+  }
+
+  .btn-size:hover{
+    background: #000;
+    color: #9D09BF;
+    border: 2px solid #9D09BF;
   }
