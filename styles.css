@@ -27,6 +27,13 @@ body {
   transform:translateX(-50%) rotateY(180deg);
 }
 
+.front-img{
+  display:none ;
+}
+.front-img img {
+  border-radius: 8px;
+}
+
 .front, .back {
   height: 100%;
   width: 100%;
