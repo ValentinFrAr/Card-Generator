@@ -17,6 +17,7 @@ const inputH = document.querySelector('.input-h')
 const btnSize = document.querySelector('.btn-size')
 const card = document.querySelector('.card')
 const frontCard = document.querySelector('.front')
+const frontImg = document.querySelector('.front-img')
 
 
 let intervalId
@@ -34,13 +35,27 @@ function stopMusic(){
 }
 
 function startCardGeneration() {
-    setTimeout(() => {
-        intervalId = setInterval(generateCard, 800);
-      }, 4000);
-    btnGenerator.removeEventListener('click', startCardGeneration); 
-    btnStopInterval.addEventListener('click', stopCardGeneration);
-    
+  // Vérifier si l'image est déjà visible
+  if (frontImg.style.display !== 'none') {
+    frontImg.style.display = 'block'; // Afficher l'image seulement si elle n'est pas déjà visible
+  }
+
+  clearInterval(intervalId); // Ajouter cette ligne pour arrêter l'intervalle précédent, le cas échéant
+
+  setTimeout(() => {
+    intervalId = setInterval(generateCard, 800);
+  }, 0); // Démarre immédiatement
+
+  setTimeout(() => {
+    frontImg.style.display = 'none'; // Cacher l'image après 5 secondes
+  }, 5000);
+
+  btnGenerator.removeEventListener('click', startCardGeneration);
+  btnStopInterval.addEventListener('click', stopCardGeneration);
 }
+
+
+
 
 function stopCardGeneration() {
     clearInterval(intervalId);
