@@ -34,25 +34,30 @@ function stopMusic(){
     audio.pause()
 }
 
+let isFirstStart = true;
+
 function startCardGeneration() {
-  // Vérifier si l'image est déjà visible
-  if (frontImg.style.display !== 'none') {
-    frontImg.style.display = 'block'; // Afficher l'image seulement si elle n'est pas déjà visible
+  // Vérifier si c'est la première fois que le générateur démarre
+  if (isFirstStart) {
+    if (frontImg.style.display !== 'none') {
+      frontImg.style.display = 'block'; // Afficher l'image seulement si elle n'est pas déjà visible
+    }
+    
+    setTimeout(() => {
+      frontImg.style.display = 'none'; // Cacher l'image après le délai de 5 secondes
+      intervalId = setInterval(generateCard, 800); // Démarrer le générateur après le délai
+    }, 5000);
+    
+    isFirstStart = false; // Mettre à jour l'état
+  } else {
+    clearInterval(intervalId); // Arrêter l'intervalle précédent
+    intervalId = setInterval(generateCard, 800); // Démarrer immédiatement
   }
-
-  clearInterval(intervalId); // Ajouter cette ligne pour arrêter l'intervalle précédent, le cas échéant
-
-  setTimeout(() => {
-    intervalId = setInterval(generateCard, 800);
-  }, 0); // Démarre immédiatement
-
-  setTimeout(() => {
-    frontImg.style.display = 'none'; // Cacher l'image après 5 secondes
-  }, 5000);
-
+  
   btnGenerator.removeEventListener('click', startCardGeneration);
   btnStopInterval.addEventListener('click', stopCardGeneration);
 }
+
 
 
 
