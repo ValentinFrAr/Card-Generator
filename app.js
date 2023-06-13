@@ -21,7 +21,6 @@ const frontImg = document.querySelector('.front-img')
 
 
 let intervalId
-// btnGenerator.addEventListener('click', generateCard)
 btnGenerator.addEventListener('click', startCardGeneration);
 btnGenerator.addEventListener('click', playMusic);
 btnStopInterval.addEventListener('click', stopMusic);
@@ -37,21 +36,20 @@ function stopMusic(){
 let isFirstStart = true;
 
 function startCardGeneration() {
-  // Vérifier si c'est la première fois que le générateur démarre
   if (isFirstStart) {
     if (frontImg.style.display !== 'none') {
-      frontImg.style.display = 'block'; // Afficher l'image seulement si elle n'est pas déjà visible
+      frontImg.style.display = 'block';
     }
     
     setTimeout(() => {
-      frontImg.style.display = 'none'; // Cacher l'image après le délai de 5 secondes
-      intervalId = setInterval(generateCard, 800); // Démarrer le générateur après le délai
+      frontImg.style.display = 'none'; 
+      intervalId = setInterval(generateCard, 800); 
     }, 5000);
     
-    isFirstStart = false; // Mettre à jour l'état
+    isFirstStart = false; 
   } else {
-    clearInterval(intervalId); // Arrêter l'intervalle précédent
-    intervalId = setInterval(generateCard, 800); // Démarrer immédiatement
+    clearInterval(intervalId); 
+    intervalId = setInterval(generateCard, 800); 
   }
   
   btnGenerator.removeEventListener('click', startCardGeneration);
@@ -73,11 +71,7 @@ function generateCard (){
     let randomNum = numbers[Math.floor(Math.random() * numbers.length)]
     let randomIcon = icons[Math.floor(Math.random() * icons.length)]
 
-    // iconTop.innerHTML = randomIcon.key
-    // iconBottom.innerHTML = randomIcon.key
-    // iconTop.style.color = randomIcon.color
-    // iconBottom.style.color = randomIcon.color
-    // cardValue.innerHTML = randomNum
+
 
     allIcons.forEach(icon => {
         icon.innerHTML = randomIcon.key;
